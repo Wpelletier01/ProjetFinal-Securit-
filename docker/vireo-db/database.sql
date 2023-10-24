@@ -1,3 +1,17 @@
+
+CREATE DATABASE IF NOT EXISTS `vireo`;
+
+USE vireo;
+
+CREATE TABLE `Channels` (
+  `ChannelID` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `Username` varchar(25) NOT NULL,
+  `Password` varchar(60) NOT NULL,
+  PRIMARY KEY (`ChannelID`),
+  UNIQUE KEY `Password` (`Password`)
+);
+
+
 CREATE TABLE `ChannelDetails` (
   `ChannelID` int(10) unsigned NOT NULL,
   `Fname` varchar(25) NOT NULL,
@@ -8,14 +22,6 @@ CREATE TABLE `ChannelDetails` (
   PRIMARY KEY (`Email`),
   KEY `ChannelID` (`ChannelID`),
   CONSTRAINT `ChannelDetails_ibfk_1` FOREIGN KEY (`ChannelID`) REFERENCES `Channels` (`ChannelID`)
-);
-
-CREATE TABLE `Channels` (
-  `ChannelID` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `Username` varchar(25) NOT NULL,
-  `Password` varchar(60) NOT NULL,
-  PRIMARY KEY (`ChannelID`),
-  UNIQUE KEY `Password` (`Password`)
 );
 
 CREATE TABLE `Videos` (
